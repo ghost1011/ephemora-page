@@ -106,6 +106,25 @@
 .play-run .btn{min-width:220px;justify-content:center}
 .playground-cta{display:flex;justify-content:center;gap:14px;margin-top:28px;flex-wrap:wrap}
 .playground-note{text-align:center;font-size:.8rem;color:var(--faint);margin-top:14px;font-family:var(--font-mono)}
+/* === PLAYGROUND: PAYLOAD + LIVE OUTPUT === */
+.payload-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 16px;background:var(--bg-elev);border-bottom:1px solid var(--border)}
+.payload-label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.payload-chip{font-family:var(--font-mono);font-size:.74rem;padding:6px 12px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.payload-chip:hover{border-color:var(--cyan);color:var(--text)}
+.payload-chip.active{background:var(--cyan);border-color:var(--cyan);color:var(--bg);font-weight:600}
+.payload-chip.payload-bad{color:#ff8fab}
+.payload-chip.payload-bad:hover{border-color:var(--red);color:#ffb3c6}
+.payload-chip.payload-bad.active{background:var(--red);border-color:var(--red);color:var(--bg)}
+.term-hint{color:var(--faint);font-style:italic}
+.term-line.out{white-space:pre-wrap;word-break:break-word;color:var(--text)}
+.term-line.out .t-ok{color:var(--cyan)}
+.term-line.out .t-deny{color:#ff8fab}
+.term-line.out .t-dim{color:var(--faint)}
+.term-line.out .t-err{color:#ff8fab}
+.evidence-badge .sig{word-break:break-all}
+#run-rerun,#run-bypass,#run-erase,#run-reset{padding:11px 16px}
+.t-prompt{color:var(--cyan);margin-right:8px}
+.t-cmd{color:var(--text)}
 /* === Dual Inspector (Docker vs Ephemora) === */
 .dual-inspector{max-width:680px;margin:56px auto 0;padding-top:40px;border-top:1px solid var(--border)}
 .di-head{text-align:center;margin-bottom:20px}
@@ -146,8 +165,6 @@
 .term-title{margin-left:8px;font-family:var(--font-mono);font-size:.72rem;color:var(--faint)}
 .term-body{padding:18px 20px;font-family:var(--font-mono);font-size:.82rem;line-height:1.9;color:var(--text);min-height:130px}
 .term-line{white-space:nowrap;overflow:hidden}
-.t-prompt{color:var(--cyan);margin-right:8px}
-.t-cmd{color:var(--text)}
 .term-out{color:var(--muted);opacity:0}
 .term-ok{color:var(--cyan)}
 .term-cleanup{color:var(--cyan)}
@@ -174,7 +191,8 @@
 @media(max-width:900px){.perf-grid,.attack-grid{grid-template-columns:repeat(2,1fr)}@media(max-width:520px){.perf-grid{grid-template-columns:1fr}}.integ-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.perf-grid,.attack-grid,.integ-grid{grid-template-columns:1fr}}
 </style></head><body><a class="skip-link" href="#top">Skip to content</a><div class="bg-grid"></div><div class="bg-glow"></div><!-- NAV --><nav class="nav" aria-label="Main navigation">  <div class="nav-inner">    <a class="logo" href="#top"><span class="logo-mark">EP</span>Ephemora</a>    <div class="nav-links">      <a href="#compare">Comparison</a>      <a href="#mechanism">How it works</a>      <a href="#perf">Benchmarks</a>      <a href="#security">Security</a>      <a href="ephemora.html" class="nav-cta" target="_blank" rel="noopener">Ephemora Platform →</a>    </div>  </div></nav><!-- HERO --><header class="hero" id="top">  <div class="container">    <span class="hero-badge"><span class="dot"></span><span>WASI Preview1 · 272 Tests · v2.1.1 · Apache-2.0</span></span>    <h1><span>Born for one execution.</span><span class="accent"><span>Gone after use.</span></span></h1>    <p class="sub">Every AI-generated function runs inside its own Cell — isolated at the WASI layer, resource-limited, deterministic, signed evidence per run. Apache-2.0 open source: run the numbers yourself.</p>    <div class="hero-buttons">      <a href="#playground" class="btn btn-primary"><span>Try it live ↓</span></a>      <!-- PLACEHOLDER: GitHub-URL wird beim Go-Public gesetzt -->      <a href="#" class="btn btn-ghost" aria-disabled="true"><span>Get the code</span></a>    </div>    <div class="hero-terminal" aria-label="Live execution demo" role="img">      <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-title">ephemora cell — run</span></div>      <div class="term-body">        <div class="term-line"><span class="t-prompt">$</span><span class="t-cmd" data-typ="from ephemora_cell import run_wasm">from ephemora_cell import run_wasm</span></div>        <div class="term-line"><span class="t-prompt">$</span><span class="t-cmd" data-typ="result = run_wasm(&quot;agent_module.wasm&quot;, max_memory_mb=128, max_fuel=1_000_000)">result = run_wasm("agent_module.wasm", max_memory_mb=128, max_fuel=1_000_000)</span></div>        <div class="term-out term-fade" data-fade>→ stdout captured · exit code 0</div>        <div class="term-out term-ok" data-fade>→ sandbox closed</div>        <div class="term-out term-cleanup" data-fade>→ cleanup: working directory removed</div>        <div class="term-line"><span class="t-cursor">▊</span></div>      </div>    </div>    <div class="hero-meta">      <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>WASI Preview1 · preopen</span></span>      <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>no network · no syscalls</span></span>      <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>memory · fuel · timeout</span></span>      <span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>5+ agent frameworks</span></span>    </div>  </div></header><!-- METRICS BAR --><section class="metrics">  <div class="metrics-inner">    <div class="metric">      <div class="num">272<span class="unit"> tests</span></div>      <div class="label"><span>isolation verified</span></div>    </div>    <div class="metric">      <div class="num">14<span class="unit"> dirs</span></div>      <div class="label"><span>dangerous dirs blocked</span></div>    </div>    <div class="metric">      <div class="num">0<span class="unit"> net</span></div>      <div class="label"><span>network access</span></div>    </div>    <div class="metric">      <div class="num">2,908<span class="unit"> LOC</span></div>      <div class="label"><span>minimal attack surface</span></div>    </div>  </div></section>
-<!-- PLAYGROUND --><section class="fade-in fade-up" id="playground">  <div class="container">    <div class="section-head center">      <span class="section-label">Playground</span>      <h2>Try it live. No sign-up. No server.</h2>      <p class="section-sub">Watch the Zero-Trace Contract unfold — the same lifecycle your code runs through: sealed, executed, evidenced, erased. This preview runs the signature experience in your browser; the full embedded engine ships with Go-Public.</p>    </div>    <div class="playground-frame" id="cell-demo">      <div class="act-bar">        <span class="act-step" data-act="1">01 · Contract</span>        <span class="act-step" data-act="2">02 · Execute</span>        <span class="act-step" data-act="3">03 · Evidence</span>        <span class="act-step" data-act="4">04 · Erase</span>      </div>      <div class="cell-editor" id="cell-editor">        <div class="seal" aria-hidden="true"></div>        <div class="seal-stamp" aria-hidden="true">Zero Trace<br>Signed</div>        <div class="play-status" id="play-status">status: idle — paste a WASM snippet</div>        <div class="term-body">          <div class="term-line"><span class="t-prompt">$</span><span class="t-cmd">from ephemora_cell import run_wasm</span></div>          <div class="term-line"><span class="t-prompt">$</span><span class="t-cmd">result = run_wasm("agent_module.wasm", max_memory_mb=128, max_fuel=1_000_000)</span></div>        </div>      </div>      <div class="telemetry">        <div class="tel-item">Memory Cycle<b class="ok" id="tel-mem">Active</b></div>        <div class="tel-item">Disk Storage Writes<b class="ok" id="tel-disk">0.00 Bytes</b></div>      </div>      <div class="evidence-badge" id="evidence-badge"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Evidence · <span class="sig">signed (Ed25519, RFC 8785)</span></span></div>      <div class="play-run">        <button class="btn btn-primary" id="run-demo" type="button">Run the Zero-Trace Contract</button>        <button class="btn btn-ghost" id="run-reset" type="button">Reset</button>      </div>    </div>    <div class="playground-cta">      <!-- PLACEHOLDER: GitHub-URL wird beim Go-Public gesetzt -->      <a href="#" class="btn btn-primary" aria-disabled="true">Get the code</a>      <a href="ephemora.html" class="btn btn-ghost" target="_blank" rel="noopener">Ephemora Platform →</a>    </div>    <p class="playground-note">Own measurement basis: UAT register · Evidence on request</p>  </div></section><!-- WHY EPHEMORA CELL --><section  class="fade-in fade-up" id="compare">  <div class="container">    <div class="section-head center">      <span class="section-label">The comparison</span>      <h2>Why not Docker, E2B, or WasmEdge?</h2>      <p class="section-sub">Ephemora Cell is purpose-built for ephemeral, deterministic execution — fuel metering, signed evidence, and a determinism proof (R² = 1.000000, UAT) that no comparable project ships.</p>    </div>    <div style="overflow-x:auto;max-width:820px;margin:0 auto"><table class="compare" style="width:100%;border-collapse:collapse;font-size:.88rem"><caption style="text-align:left;font-size:.82rem;color:var(--faint);padding-bottom:12px">Feature comparison · Open Source</caption><thead><tr><th style="text-align:left;padding:12px;border-bottom:2px solid var(--cyan);color:var(--cyan)">Feature</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--cyan);color:var(--text)">Ephemora Cell</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">Extism</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">WasmEdge</th></tr></thead><tbody><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Sandbox model</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">WASI Preview1 · preopen-only</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Host functions</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">WASI + WASI-nn</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Network access</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">None by default</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Optional</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Available</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Resource limits</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Memory · Fuel · Timeout (4 enforcement modes)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Limited</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Memory · CPU</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Automatic cleanup</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Automatic</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Not built-in</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Not built-in</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Focus</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Agent sandboxing</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Generic plugins</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Inference runtime</td></tr><tr><td style="padding:10px 12px">License</td><td style="text-align:center;padding:10px 12px;font-weight:700;color:var(--text)">Apache 2.0</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Apache 2.0</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Apache 2.0</td></tr></tbody></table></div>    <div style="overflow-x:auto;max-width:820px;margin:36px auto 0"><table class="compare" style="width:100%;border-collapse:collapse;font-size:.88rem"><caption style="text-align:left;font-size:.82rem;color:var(--faint);padding-bottom:12px">Who else sandboxes agent code? · researched 2026</caption><thead><tr><th style="text-align:left;padding:12px;border-bottom:2px solid var(--cyan);color:var(--cyan)">Capability</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--cyan);color:var(--text)">Ephemora Cell</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">Wassette (MS)</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">mcp.run → Turbo MCP</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">ironclaw</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">vaara</th></tr></thead><tbody><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Sandbox</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">WASI in-process</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">WASI (early)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">WASM servlets (archived)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Wasmtime (proprietary)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Proxy only</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Fuel metering</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Deterministic, per-call</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Fuel limit only</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Execution attestation</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">_meta.execution + SEP-2787-styled</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Attestation only</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Determinism proof</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">R² = 1.000000 (UAT)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Scale proof</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">845 exec/s, 1000 sandboxes (DGX)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">License</td><td style="text-align:center;padding:10px 12px;font-weight:700;color:var(--text)">Apache 2.0 OSS</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">MIT (early dev)</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Archived</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Proprietary</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">OSS</td></tr></tbody></table><p class="compare-foot">Researched 08/2026 — no fuel metering, attestation, or determinism proof found in any comparable OSS project.</p></div>
+<!-- PLAYGROUND --><section class="fade-in fade-up" id="playground">  <div class="container">    <div class="section-head center">      <span class="section-label">Playground</span>      <h2>Try it live. No sign-up. No server.</h2>      <p class="section-sub">Watch the Zero-Trace Contract unfold — sealed, executed, evidenced, erased. This preview runs the actual wasm32 component in your browser (same component shape as the hosted runtime, without pooled scheduling). Pooled metrics such as 0.125 ms apply to the hosted runtime, not to this preview.</p>    </div>    <div class="playground-frame" id="cell-demo">      <div class="act-bar">        <span class="act-step" data-act="1">01 · Contract</span>        <span class="act-step" data-act="2">02 · Execute</span>        <span class="act-step" data-act="3">03 · Evidence</span>        <span class="act-step" data-act="4">04 · Erase</span>      </div>      <div class="payload-row" role="group" aria-label="Demo payloads">        <span class="payload-label">payload</span>        <button type="button" class="payload-chip" data-payload="filter">data-filter.py</button>        <button type="button" class="payload-chip" data-payload="rate">rate-limiter.py</button>        <button type="button" class="payload-chip" data-payload="vector">vector-match.py</button>        <button type="button" class="payload-chip payload-bad" data-payload="malicious">malicious.py</button>        <button type="button" class="payload-chip payload-bad" data-payload="heavy">heavy-loop.py</button>      </div>
+      <div class="cell-editor" id="cell-editor">        <div class="seal" aria-hidden="true"></div>        <div class="seal-stamp" aria-hidden="true">Zero Trace<br>Signed</div>        <div class="play-status" id="play-status">status: idle — paste a WASM snippet</div>        <div class="term-body" id="cell-output" aria-live="polite">          <div class="term-line term-hint">// select a payload, then run the contract — output appears here</div>        </div>      </div>      <div class="telemetry">        <div class="tel-item">Fuel left<b class="ok" id="tel-fuel">&mdash;</b></div>        <div class="tel-item">Envelope<b class="ok" id="tel-env">open</b></div>      </div>      <div class="evidence-badge" id="evidence-badge"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Evidence digest (SHA-256) · <span class="sig" id="evidence-digest">&mdash;</span></span></div>      <div class="play-run">        <button class="btn btn-primary" id="run-demo" type="button">Run the Zero-Trace Contract</button>        <button class="btn btn-ghost" id="run-rerun" type="button">Re-run (determinism)</button>        <button class="btn btn-ghost" id="run-bypass" type="button">Bypass attempt</button>        <button class="btn btn-ghost" id="run-erase" type="button">Erase</button>        <button class="btn btn-ghost" id="run-reset" type="button">Reset</button>      </div>    </div>    <div class="playground-cta">      <!-- PLACEHOLDER: GitHub-URL wird beim Go-Public gesetzt -->      <a href="#" class="btn btn-primary" aria-disabled="true">Get the code</a>      <a href="ephemora.html" class="btn btn-ghost" target="_blank" rel="noopener">Ephemora Platform →</a>    </div>    <p class="playground-note">In-browser preview: same wasm32 component shape as the hosted runtime, without pooled scheduling · Own measurement basis: UAT register · Evidence on request</p>  </div></section><!-- WHY EPHEMORA CELL --><section  class="fade-in fade-up" id="compare">  <div class="container">    <div class="section-head center">      <span class="section-label">The comparison</span>      <h2>Why not Docker, E2B, or WasmEdge?</h2>      <p class="section-sub">Ephemora Cell is purpose-built for ephemeral, deterministic execution — fuel metering, signed evidence, and a determinism proof (R² = 1.000000, UAT) that no comparable project ships.</p>    </div>    <div style="overflow-x:auto;max-width:820px;margin:0 auto"><table class="compare" style="width:100%;border-collapse:collapse;font-size:.88rem"><caption style="text-align:left;font-size:.82rem;color:var(--faint);padding-bottom:12px">Feature comparison · Open Source</caption><thead><tr><th style="text-align:left;padding:12px;border-bottom:2px solid var(--cyan);color:var(--cyan)">Feature</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--cyan);color:var(--text)">Ephemora Cell</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">Extism</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">WasmEdge</th></tr></thead><tbody><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Sandbox model</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">WASI Preview1 · preopen-only</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Host functions</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">WASI + WASI-nn</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Network access</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">None by default</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Optional</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Available</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Resource limits</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Memory · Fuel · Timeout (4 enforcement modes)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Limited</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Memory · CPU</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Automatic cleanup</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Automatic</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Not built-in</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Not built-in</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Focus</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Agent sandboxing</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Generic plugins</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Inference runtime</td></tr><tr><td style="padding:10px 12px">License</td><td style="text-align:center;padding:10px 12px;font-weight:700;color:var(--text)">Apache 2.0</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Apache 2.0</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Apache 2.0</td></tr></tbody></table></div>    <div style="overflow-x:auto;max-width:820px;margin:36px auto 0"><table class="compare" style="width:100%;border-collapse:collapse;font-size:.88rem"><caption style="text-align:left;font-size:.82rem;color:var(--faint);padding-bottom:12px">Who else sandboxes agent code? · researched 2026</caption><thead><tr><th style="text-align:left;padding:12px;border-bottom:2px solid var(--cyan);color:var(--cyan)">Capability</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--cyan);color:var(--text)">Ephemora Cell</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">Wassette (MS)</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">mcp.run → Turbo MCP</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">ironclaw</th><th style="text-align:center;padding:12px;border-bottom:2px solid var(--border);color:var(--muted)">vaara</th></tr></thead><tbody><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Sandbox</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">WASI in-process</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">WASI (early)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">WASM servlets (archived)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Wasmtime (proprietary)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Proxy only</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Fuel metering</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">Deterministic, per-call</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Fuel limit only</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Execution attestation</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">_meta.execution + SEP-2787-styled</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">Attestation only</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Determinism proof</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">R² = 1.000000 (UAT)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">Scale proof</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)">845 exec/s, 1000 sandboxes (DGX)</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td><td style="text-align:center;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted)">No</td></tr><tr><td style="padding:10px 12px;border-bottom:1px solid var(--border)">License</td><td style="text-align:center;padding:10px 12px;font-weight:700;color:var(--text)">Apache 2.0 OSS</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">MIT (early dev)</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Archived</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">Proprietary</td><td style="text-align:center;padding:10px 12px;color:var(--muted)">OSS</td></tr></tbody></table><p class="compare-foot">Researched 08/2026 — no fuel metering, attestation, or determinism proof found in any comparable OSS project.</p></div>
   </div>
   <div class="dual-inspector" id="dual-inspector">
     <div class="di-head"><span class="di-title">Docker hinterlässt Spuren. Ephemora hinterlässt Beweise.</span></div>
@@ -372,18 +390,58 @@ result = run_wasm(
 })();
 </script>
 <script>
-/* === PLAYGROUND: 4-Akt Zero-Trace Contract (fire-once, reduced-motion ok) === */
+/* === PLAYGROUND: echte wasm32-Cell (Zero-Trace Contract, deterministisch) === */
 (function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var editor = document.getElementById('cell-editor');
   var status = document.getElementById('play-status');
   var badge = document.getElementById('evidence-badge');
-  var runBtn = document.getElementById('run-demo');
-  var resetBtn = document.getElementById('run-reset');
+  var digestEl = document.getElementById('evidence-digest');
+  var output = document.getElementById('cell-output');
+  var fuelEl = document.getElementById('tel-fuel');
+  var envEl = document.getElementById('tel-env');
   var steps = document.querySelectorAll('#cell-demo .act-step');
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!editor || !runBtn) return;
-  var timer = null;
-  var setAct = function(n){
+  if(!editor || !status || !output) return;
+
+  var PAYLOADS = {
+    filter: 'def main(data):\n    return [x for x in data if x > 0]\n',
+    rate: 'def main(req):\n    # deterministic token-bucket simulation\n    bucket = 10\n    for r in req:\n        if bucket <= 0:\n            yield "deny"\n        else:\n            bucket -= 1\n            yield "allow"\n',
+    vector: 'def main(query, docs):\n    best = None\n    best_score = 0\n    for d in docs:\n        s = sum(a == b for a, b in zip(query, d))\n        if s > best_score:\n            best, best_score = d, s\n    return best\n',
+    malicious: 'import os\nos.system("rm -rf /")\n',
+    heavy: 'x = 1\n' + 'x = x + 1  # deterministic loop\n' * 90
+  };
+  var NAMES = { filter: 'data-filter.py', rate: 'rate-limiter.py', vector: 'vector-match.py', malicious: 'malicious.py', heavy: 'heavy-loop.py' };
+
+  var cell = null;      // exports
+  var memory = null;
+  var selected = 'filter';
+  var sealed = false;
+  var lastOutput = '';
+  var lastFp = '';
+  var running = false;
+
+  var enc = new TextEncoder();
+  var dec = new TextDecoder();
+  var wasi = {
+    fd_write: function(fd, iovs, iovsLen, nwritten){
+      var written = 0;
+      var dv = new DataView(memory.buffer);
+      for(var i = 0; i < iovsLen; i++){
+        var ptr = dv.getUint32(iovs + i * 8, true);
+        var len = dv.getUint32(iovs + i * 8 + 4, true);
+        var s = dec.decode(new Uint8Array(memory.buffer, ptr, len));
+        if(fd === 2) console.error(s); else console.log(s);
+        written += len;
+      }
+      dv.setUint32(nwritten, written, true);
+      return 0;
+    },
+    environ_sizes_get: function(n, eb){ var dv = new DataView(memory.buffer); dv.setUint32(n, 0, true); dv.setUint32(eb, 0, true); return 0; },
+    environ_get: function(){ return 0; },
+    proc_exit: function(code){ throw new Error('proc_exit(' + code + ')'); }
+  };
+
+  function setAct(n){
     steps.forEach(function(s){
       var i = parseInt(s.getAttribute('data-act'), 10);
       s.classList.toggle('active', i === n);
@@ -391,33 +449,210 @@ result = run_wasm(
     });
     editor.className = 'cell-editor';
     editor.classList.add(['contract','execute','evidence','erase'][n-1]);
-    if(n === 1){ status.innerHTML = 'status: <b>Zero Trace Contract · signed</b> — isolation seal closed'; }
-    if(n === 2){ status.innerHTML = 'status: <b>executing</b> — pooled engine · deny-all IO'; }
-    if(n === 3){ status.innerHTML = 'status: <b>result crystallized</b> — no log files written'; badge.classList.add('show'); }
-    if(n === 4){ status.innerHTML = 'status: <b>erased</b> — context dissolved to null state'; badge.classList.remove('show'); }
-  };
-  var reset = function(){
-    if(timer) clearTimeout(timer);
+  }
+
+  function clearActs(){
     steps.forEach(function(s){ s.classList.remove('active','done'); });
     editor.className = 'cell-editor';
-    badge.classList.remove('show');
-    status.innerHTML = 'status: idle — paste a WASM snippet';
-  };
-  var run = function(){
-    if(timer) clearTimeout(timer);
-    badge.classList.remove('show');
-    var delay = reduce ? 50 : 1200;
-    setAct(1);
-    [2,3,4].forEach(function(n){
-      timer = setTimeout(function(){ setAct(n); }, n * delay);
-    });
-  };
-  runBtn.addEventListener('click', run);
-  resetBtn.addEventListener('click', reset);
-})();
-</script>
+  }
 
-<script>
+  function outLine(text, cls){
+    var div = document.createElement('div');
+    div.className = 'term-line out' + (cls ? ' ' + cls : '');
+    div.textContent = text;
+    output.appendChild(div);
+    if(!reduce) div.animate([{opacity:0},{opacity:1}], {duration:180, easing:'ease-out'});
+  }
+
+  function resetOutput(){ while(output.firstChild) output.removeChild(output.firstChild); }
+
+  function call(action, code){
+    var bytes = enc.encode(code);
+    if(bytes.length > 8192){ return {rc:1, out:'ERROR: payload exceeds in-buffer capacity'}; }
+    var ptr = cell.in_buf();
+    new Uint8Array(memory.buffer, ptr, bytes.length).set(bytes);
+    var rc = cell.cell_call(action, ptr, bytes.length);
+    var out = dec.decode(new Uint8Array(memory.buffer, cell.out_ptr(), cell.out_len()));
+    return {rc: rc, out: out, fuel: cell.fuel_left()};
+  }
+
+  function sha256(text){
+    return crypto.subtle.digest('SHA-256', enc.encode(text)).then(function(buf){
+      var h = '';
+      var arr = new Uint8Array(buf);
+      for(var i = 0; i < arr.length; i++) h += arr[i].toString(16).padStart(2, '0');
+      return h;
+    });
+  }
+
+  function setStatus(html){ status.innerHTML = html; }
+
+  function contract(code){
+    clearActs();
+    setAct(1);
+    setStatus('status: <b>contract</b> — deny-list check, fuel budget granted');
+    var r = call(0, code);
+    outLine(r.out, r.out.indexOf('DENIED') === 0 ? 't-deny' : 't-ok');
+    if(r.out.indexOf('DENIED') === 0){
+      fuelEl.textContent = '—';
+      return {ok:false};
+    }
+    fuelEl.textContent = String(r.fuel);
+    return {ok:true, fuel:r.fuel};
+  }
+
+  function execute(code){
+    setAct(2);
+    setStatus('status: <b>executing</b> — deterministic steps, fuel metered');
+    var r = call(1, code);
+    outLine(r.out, r.out.indexOf('FUEL EXHAUSTED') === 0 ? 't-deny' : (r.out.indexOf('ERROR') === 0 ? 't-err' : 't-ok'));
+    fuelEl.textContent = String(r.fuel);
+    var fp = '';
+    var m = r.out.match(/fingerprint: (0x[0-9a-f]+)/);
+    if(m) fp = m[1];
+    return {ok:r.out.indexOf('EXECUTION REPORT') === 0, out:r.out, fp:fp, fuel:r.fuel};
+  }
+
+  function evidence(code, report){
+    setAct(3);
+    setStatus('status: <b>evidenced</b> — SHA-256 digest over payload + report');
+    return sha256(code + '\n' + report).then(function(digest){
+      digestEl.textContent = digest;
+      badge.classList.add('show');
+      outLine('evidence digest: ' + digest, 't-dim');
+      return digest;
+    });
+  }
+
+  function erase(code){
+    setAct(4);
+    setStatus('status: <b>erased</b> — envelope sealed, context discarded');
+    var r = call(2, code);
+    outLine(r.out, 't-ok');
+    fuelEl.textContent = String(r.fuel);
+    envEl.textContent = 'sealed';
+    sealed = true;
+    digestEl.textContent = '—';
+    badge.classList.remove('show');
+    clearActs();
+    setAct(4);
+    var stamp = editor.querySelector('.seal-stamp');
+    if(stamp && !reduce){
+      stamp.style.animation = 'none';
+      void stamp.offsetWidth;
+      stamp.style.animation = 'stampIn .45s ease-out both, stampPress .35s .45s ease-out both';
+    }
+  }
+
+  function bypass(code){
+    clearActs();
+    setAct(1);
+    setStatus('status: <b>bypass attempt</b> — capability re-check on every invocation');
+    var r = call(3, code);
+    outLine(r.out, 't-deny');
+    fuelEl.textContent = String(r.fuel);
+  }
+
+  function reset(){
+    if(running) return;
+    resetOutput();
+    outLine('// select a payload, then run the contract — output appears here', 'term-hint');
+    clearActs();
+    setStatus('status: idle — select a payload');
+    fuelEl.textContent = '—';
+    envEl.textContent = 'open';
+    digestEl.textContent = '—';
+    badge.classList.remove('show');
+    sealed = false;
+    lastFp = '';
+  }
+
+  function runContract(){
+    if(!cell){ setStatus('status: <b>engine unavailable</b> — wasm could not be loaded'); return; }
+    if(running) return;
+    var code = PAYLOADS[selected];
+    if(!code) return;
+    running = true;
+    resetOutput();
+    if(sealed){ outLine('ERROR: envelope sealed — run contract again after reset', 't-err'); running = false; return; }
+    outLine('$ run_wasm("' + NAMES[selected] + '", max_fuel=1000)', 't-dim');
+    var c = contract(code);
+    if(!c.ok){ running = false; return; }
+    var e = execute(code);
+    if(!e.ok){ running = false; return; }
+    evidence(code, e.out).then(function(){
+      running = false;
+    });
+  }
+
+  function rerun(){
+    if(!cell || running) return;
+    if(sealed){ outLine('ERROR: envelope sealed — reset first', 't-err'); return; }
+    var code = PAYLOADS[selected];
+    outLine('$ re-run "' + NAMES[selected] + '" (determinism check)', 't-dim');
+    var c = contract(code);
+    if(!c.ok) return;
+    var e = execute(code);
+    if(!e.ok) return;
+    var sameFp = (lastFp && e.fp === lastFp);
+    outLine(sameFp ? 'deterministic: fingerprint unchanged (' + e.fp + ')' : 'fingerprint: ' + e.fp, sameFp ? 't-ok' : 't-dim');
+    lastFp = e.fp;
+  }
+
+  // Payload-Chips
+  document.querySelectorAll('.payload-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      selected = chip.getAttribute('data-payload');
+      document.querySelectorAll('.payload-chip').forEach(function(o){ o.classList.toggle('active', o === chip); });
+      reset();
+    });
+  });
+
+  // Load wasm
+  var inited = false;
+  function init(){
+    if(inited) return;
+    inited = true;
+    fetch('cell-demo.wasm').then(function(r){
+      if(!r.ok) throw new Error('fetch ' + r.status);
+      return r.arrayBuffer();
+    }).then(function(buf){
+      return WebAssembly.compile(buf);
+    }).then(function(mod){
+      return WebAssembly.instantiate(mod, { wasi_snapshot_preview1: wasi });
+    }).then(function(inst){
+      cell = inst.exports;
+      memory = cell.memory;
+      setStatus('status: <b>engine loaded</b> — wasm32 component ' + NAMES[selected] + ' ready');
+    }).catch(function(err){
+      setStatus('status: <b>engine unavailable</b> — ' + err.message + ' (wasm blocked?)');
+      console.error(err);
+    });
+  }
+
+  document.getElementById('run-demo').addEventListener('click', runContract);
+  document.getElementById('run-rerun').addEventListener('click', rerun);
+  document.getElementById('run-bypass').addEventListener('click', function(){
+    if(!cell){ setStatus('status: <b>engine unavailable</b>'); return; }
+    bypass(PAYLOADS.malicious);
+  });
+  document.getElementById('run-erase').addEventListener('click', function(){
+    if(!cell || running) return;
+    if(sealed){ outLine('already sealed — reset to open a new envelope', 't-dim'); return; }
+    erase(PAYLOADS[selected]);
+  });
+  document.getElementById('run-reset').addEventListener('click', reset);
+
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ init(); io.disconnect(); } });
+    }, {rootMargin: '400px'});
+    io.observe(editor);
+  } else {
+    init();
+  }
+})();
+
 /* === HOVER DECAY: Cursor-Lichtschein (delegiert, nur transform/opacity) === */
 (function(){
   document.addEventListener('mousemove', function(e){
