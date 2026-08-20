@@ -293,7 +293,7 @@ footer a{color:var(--sigil)}
 <section class="fade-in fade-up" id="compliance"><div class="container">
   <div class="section-head"><span class="section-label">Compliance Mapping</span>
     <h2>56× full control mappings across 7 frameworks.</h2>
-    <p class="section-sub">299/299 compliance tests passed (56 full + 6 partial, internal). Mapping document — not enforcement. NSA PP-26-1834: 7/9 mapped (5 full, 2 partial — self-assessment, not an external audit), target 9/9 by 31.12.2026.</p>
+    <p class="section-sub">299/299 compliance tests passed (56 full + 6 partial, internal). Mapping document — not enforcement; full 56×7 matrix available on request.</p>
   </div>
   <div class="chip-row" role="list" aria-label="Compliance frameworks">
     <div class="chip seal" role="listitem"><b>56×</b> full control mappings</div>
@@ -304,7 +304,7 @@ footer a{color:var(--sigil)}
     <div class="chip" role="listitem">SOC 2</div>
     <div class="chip" role="listitem">CMMC</div>
     <div class="chip" role="listitem">HIPAA (partial)</div>
-    <div class="chip" role="listitem">NSA PP-26-1834 <b>7/9</b></div>
+
   </div>
   <div style="text-align:center">
     <button class="btn btn-ghost" id="open-matrix" type="button" aria-expanded="false" aria-controls="matrix-drawer">Request the full 56×7 matrix</button>
@@ -344,9 +344,8 @@ footer a{color:var(--sigil)}
 <div class="drawer-backdrop" id="matrix-backdrop"></div>
 <aside class="drawer" id="matrix-drawer" role="dialog" aria-modal="true" aria-labelledby="matrix-title" aria-hidden="true">
   <button class="close-x" id="close-matrix" type="button" aria-label="Close">✕</button>
-  <h3 id="matrix-title">9×2 NSA Compliance Matrix</h3>
-  <p style="color:var(--ink-soft);font-size:.9rem;margin:8px 0 6px">Current coverage <b style="color:var(--sigil)">7/9</b> (5 full, 2 partial — self-assessment), target 9/9 (31.12.2026).</p>
-  <p style="color:var(--ink-soft);font-size:.9rem;margin-bottom:20px">Plus the full 56-control × 7-framework mapping (299/299 tests).</p>
+  <h3 id="matrix-title">Compliance Evidence Matrix</h3>
+  <p style="color:var(--ink-soft);font-size:.9rem;margin-bottom:20px">The full 56-control × 7-framework mapping — 299/299 compliance tests (56 full + 6 partial, internal). Request via the form below; investor &amp; enterprise request only.</p>
   <form class="form" id="matrix-form" novalidate style="padding:0;background:none;border:none">
     <label for="m-name">Name</label>
     <input id="m-name" name="name" type="text" required autocomplete="name">
@@ -356,12 +355,11 @@ footer a{color:var(--sigil)}
     <input id="m-org" name="organization" type="text">
     <button class="btn btn-primary" type="submit">Request the Matrix →</button>
   </form>
-  <p style="font-size:.78rem;color:var(--ink-faint);margin-top:14px">Not publicly disclosed — investor &amp; enterprise request only. <a href="https://www.nsa.gov/press-releases/2610016" target="_blank" rel="noopener" style="color:var(--sigil)">NSA PP-26-1834 PDF →</a></p>
+  <p style="font-size:.78rem;color:var(--ink-faint);margin-top:14px">Not publicly disclosed — investor &amp; enterprise request only.</p>
 </aside>
 
 <footer>
   <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:12px">
-    <a href="https://www.nsa.gov/press-releases/2610016" target="_blank" rel="noopener">NSA PP-26-1834</a>
     <span>UAT evidence available on request</span>
   </div>
   <a href="index.html">← Back to Ephemora Cell</a>
@@ -403,7 +401,7 @@ footer a{color:var(--sigil)}
 /* PLACEHOLDER: Empfänger-Adresse wird beim Go-Public gesetzt */
 var FORM_EMAIL = 'hello@ephemora.io';
 (function(){
-  var subject = function(t){ return t === 'matrix' ? 'Request: NSA 9x2 + 56x7 compliance matrix' : 'Request: Ephemora Platform demo'; };
+  var subject = function(t){ return t === 'matrix' ? 'Request: 56x7 compliance evidence matrix' : 'Request: Ephemora Platform demo'; };
   document.querySelectorAll('form').forEach(function(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
