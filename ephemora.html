@@ -16,6 +16,11 @@
 :root{--paper:#F6F2E9;--paper-2:#EFE9DC;--card:#FBF8F1;--card-2:#F2ECDD;--ink:#231F17;--ink-soft:#5C5544;--ink-faint:#8A8271;--sigil:#A63A28;--sigil-soft:rgba(166,58,40,.08);--line:#D8D0BC;--line-strong:#B8AE96;--radius:14px;--radius-sm:10px;--container:1120px;--font-serif:'Source Serif 4',Georgia,'Times New Roman',serif;--font-sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}a{text-decoration:none;color:inherit}
 :focus-visible{outline:2px solid var(--sigil);outline-offset:2px}
+.feature-card,.btn,.nav-links a,.nav-cta,.chip,.proof-item{position:relative}
+.feature-card::after,.btn::after,.nav-links a::after,.nav-cta::after,.chip::after,.proof-item::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .25s ease;background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(166,58,40,.08),transparent 65%);z-index:1}
+.feature-card:hover::after,.btn:hover::after,.nav-links a:hover::after,.nav-cta:hover::after,.chip:hover::after,.proof-item:hover::after{opacity:1}
+.feature-card h3,.feature-card p,.feature-card .mono,.btn,.nav-links a,.nav-cta,.chip,.proof-item .n,.proof-item .l{position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce){.feature-card::after,.btn::after,.nav-links a::after,.nav-cta::after,.chip::after,.proof-item::after{transition:none}}
 .skip-link{position:absolute;left:-999px;top:0;background:var(--sigil);color:var(--paper);padding:10px 16px;border-radius:0 0 8px 0;z-index:100;font-weight:600}
 .skip-link:focus{left:0}
 .container{max-width:var(--container);margin:0 auto;padding:0 24px}section{padding:80px 0}
@@ -411,6 +416,19 @@ var FORM_EMAIL = 'hello@ephemora.io';
       if(org && org.value && org.value !== 'Select…') body += '\n' + (org.name === 'organization' ? 'Organization' : 'Use case') + ': ' + org.value;
       window.location.href = 'mailto:' + FORM_EMAIL + '?subject=' + encodeURIComponent(subject(isMatrix ? 'matrix' : 'demo')) + '&body=' + encodeURIComponent(body);
     });
+  });
+})();
+</script>
+
+<script>
+/* === HOVER DECAY: Cursor-Lichtschein (delegiert) — Siegel-Ton auf Papier === */
+(function(){
+  document.addEventListener('mousemove', function(e){
+    var el = e.target.closest('.feature-card,.btn,.nav-links a,.nav-cta,.chip,.proof-item');
+    if(!el) return;
+    var r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (e.clientY - r.top) + 'px');
   });
 })();
 </script>
