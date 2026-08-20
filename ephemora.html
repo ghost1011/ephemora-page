@@ -52,52 +52,21 @@ nav{position:sticky;top:0;z-index:10;background:rgba(246,242,233,.88);backdrop-f
 .section-sub{font-size:1.05rem;color:var(--ink-soft);max-width:680px;margin:18px auto 0;line-height:1.6}
 .center{text-align:center}
 /* === Problem / HNDL === */
-.problem-box{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sigil);border-radius:12px;padding:36px 40px}
-.problem-box p{color:var(--ink-soft);font-size:1.02rem;line-height:1.7}
-.problem-box .lead{color:var(--ink);font-family:var(--font-serif);font-size:1.3rem;font-weight:700;line-height:1.4;margin-bottom:14px}
-.problem-box .foot{font-size:.82rem;color:var(--ink-faint);margin-top:16px}
-/* === Features === */
-.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto}
-.feature-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
-.feature-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--sigil)}
-.feature-card p{font-size:.9rem;color:var(--ink-soft);line-height:1.6}
-.feature-card .mono{font-family:var(--font-mono);font-size:.82rem;color:var(--ink);background:var(--paper-2);border-radius:6px;padding:6px 10px;display:inline-block;margin-top:10px}
-/* === Tables (benchmarks + compliance) === */
-.table-wrap{max-width:960px;margin:0 auto;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
-.table-wrap table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:760px}
-.table-wrap th,.table-wrap td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.table-wrap thead th{background:var(--paper-2);font-weight:700;color:var(--ink);border-bottom:2px solid var(--line-strong);position:sticky;top:0;z-index:2}
-.table-wrap tbody tr:last-child td{border-bottom:none}
-.table-wrap tbody tr:hover{background:var(--card-2)}
-.table-wrap .win-col{color:var(--sigil);text-align:center}
-.table-wrap .us-col{background:var(--sigil-soft);color:var(--sigil);font-weight:600;text-align:center}
-.table-wrap th[scope="row"]{font-weight:600;color:var(--ink)}
-.table-wrap th[scope="row"],.table-wrap td:first-child{position:sticky;left:0;background:var(--card);z-index:1}
-.table-wrap thead th:first-child{background:var(--paper-2);z-index:3}
-.table-note{font-size:.78rem;color:var(--ink-faint);margin-top:14px;line-height:1.7;max-width:960px;margin-left:auto;margin-right:auto}
-/* === Compliance chips + drawer === */
-.chip-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:860px;margin:0 auto 28px}
-.chip{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.02em;padding:10px 16px;border-radius:999px;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft)}
-.chip b{color:var(--sigil);font-weight:700}
-.chip.seal{border-color:var(--sigil);color:var(--sigil);background:var(--sigil-soft)}
-.drawer-backdrop{position:fixed;inset:0;background:rgba(35,31,23,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
-.drawer-backdrop.open{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,100%);background:var(--paper);border-left:1px solid var(--line-strong);transform:translateX(100%);transition:transform .3s ease;z-index:41;overflow-y:auto;padding:40px 32px}
-.drawer.open{transform:translateX(0)}
-.drawer h3{font-size:1.3rem;margin-bottom:8px}
-.drawer .close-x{position:absolute;top:16px;right:16px;background:none;border:1px solid var(--line-strong);border-radius:8px;color:var(--ink);font-size:1.1rem;width:44px;height:44px;cursor:pointer}
-.drawer .close-x:hover{border-color:var(--sigil);color:var(--sigil)}
-/* === Form === */
-.form{max-width:460px;margin:0 auto;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.form label{display:block;font-size:.82rem;font-weight:600;margin:14px 0 6px;color:var(--ink)}
-.form input,.form select,.form textarea{width:100%;padding:11px 14px;border:1px solid var(--line-strong);border-radius:8px;background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:.92rem}
-.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--sigil);outline-offset:1px;border-color:var(--sigil)}
-.form .btn{margin-top:22px;width:100%;justify-content:center;border:none;cursor:pointer}
-.form .form-note{font-size:.76rem;color:var(--ink-faint);margin-top:12px;text-align:center}
-.cta-section{text-align:center;padding:60px 0}
-.cta-section h2{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:14px}
-.cta-section>p{color:var(--ink-soft);max-width:520px;margin:0 auto 32px}
-.btn-linkedin{display:inline-flex;align-items:center;gap:10px;background:#0A66C2;color:#fff;font-weight:600;font-size:.95rem;padding:14px 28px;border-radius:var(--radius-sm)}.btn-linkedin:hover{filter:brightness(1.12)}.btn-linkedin:active{filter:brightness(.92);transform:scale(.97)}
+.story-footnote{max-width:520px;margin:24px auto 0;font-size:.82rem;color:var(--ink-faint);text-align:center}
+@media (prefers-reduced-motion: no-preference){
+  @supports (animation-timeline: --x) and (view-timeline-name: --x){
+    .hndl-grid{timeline-scope:--hndl-1 --hndl-2 --hndl-3}
+    .hndl-step[data-step="1"]{view-timeline-name:--hndl-1}
+    .hndl-step[data-step="2"]{view-timeline-name:--hndl-2}
+    .hndl-step[data-step="3"]{view-timeline-name:--hndl-3}
+    @keyframes hndlActive{from{opacity:.3;transform:translateY(4px);border-color:var(--line)}to{opacity:1;transform:translateY(0);border-color:var(--sigil)}}
+    @keyframes hndlIdle{from{opacity:1;border-color:var(--sigil)}to{opacity:.3;transform:translateY(4px);border-color:var(--line)}}
+    .hndl-phase[data-phase="1"]{animation:hndlIdle linear both,hndlActive linear both;animation-timeline:--hndl-1,--hndl-1;animation-range:entry 0% exit 100%,entry 15% exit 85%}
+    .hndl-phase[data-phase="2"]{animation:hndlIdle linear both,hndlActive linear both;animation-timeline:--hndl-2,--hndl-2;animation-range:entry 0% exit 100%,entry 15% exit 85%}
+    .hndl-phase[data-phase="3"]{animation:hndlIdle linear both,hndlActive linear both;animation-timeline:--hndl-3,--hndl-3;animation-range:entry 0% exit 100%,entry 15% exit 85%}
+  }
+}
+@media(max-width:900px){.hndl-grid{grid-template-columns:1fr;gap:28px}.hndl-frame{position:static}.hndl-steps{max-width:520px;margin:0 auto}}
 .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft);font-size:.85rem;margin-bottom:16px}.back-link:hover{color:var(--sigil)}
 footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;font-size:.8rem;color:var(--ink-faint)}
 footer a{color:var(--sigil)}
@@ -110,6 +79,7 @@ footer a{color:var(--sigil)}
 </style>
 </head><body>
 <a class="skip-link" href="#main">Skip to content</a>
+<main id="main">
 
 <!-- NAV -->
 <nav><div class="nav-inner">
@@ -162,10 +132,34 @@ footer a{color:var(--sigil)}
   <div class="section-head"><span class="section-label">The challenge</span>
     <h2>Why now?</h2>
   </div>
-  <div class="problem-box">
-    <p class="lead">Persistence is a harvest surface. Adversaries collect encrypted data today and wait for quantum decryption.</p>
-    <p>CISA, NSA, NIST and the UK NCSC describe harvest-now-decrypt-later as an ongoing operation — not a future hypothetical — and CNSA 2.0 timelines put the migration clock on regulated organizations today. Every persistent execution environment is a standing target; Ephemora treats persistence as a security decision, not a default, and reduces the exposure window by reducing the lifetime of the execution surface.</p>
-    <p class="foot">Ephemora complements post-quantum cryptography by controlling the lifetime of the execution environment. It does not replace PQC and does not claim to re-encrypt data.</p>
+  <div class="hndl-grid">
+    <div class="hndl-frame" aria-hidden="true">
+      <div class="hndl-head">HNDL — threat sequence</div>
+      <div class="hndl-phases">
+        <div class="hndl-phase" data-phase="1"><span class="hndl-badge">01 · HARVEST</span><span class="hndl-text">adversaries collect encrypted data today</span></div>
+        <div class="hndl-phase" data-phase="2"><span class="hndl-badge">02 · PERSIST</span><span class="hndl-text">every environment is a standing target</span></div>
+        <div class="hndl-phase" data-phase="3"><span class="hndl-badge">03 · DECIDE</span><span class="hndl-text">persistence = security decision</span></div>
+      </div>
+      <div class="hndl-foot">PQC complement — not a replacement</div>
+    </div>
+    <div class="hndl-steps">
+      <div class="hndl-step" data-step="1">
+        <div class="n">01</div>
+        <h3>Harvest now</h3>
+        <p>Adversaries collect encrypted data today and wait for quantum decryption. CISA, NSA, NIST and the UK NCSC describe this as an ongoing operation — not a future hypothetical.</p>
+      </div>
+      <div class="hndl-step" data-step="2">
+        <div class="n">02</div>
+        <h3>Persistence is a harvest surface</h3>
+        <p>CNSA 2.0 timelines put the migration clock on regulated organizations today. Every persistent execution environment is a standing target — the longer it lives, the more it is worth harvesting.</p>
+      </div>
+      <div class="hndl-step" data-step="3">
+        <div class="n">03</div>
+        <h3>Decide: persistence is not a default</h3>
+        <p>Ephemora treats persistence as a security decision, not a default — reducing the exposure window by reducing the lifetime of the execution surface.</p>
+      </div>
+      <p class="story-footnote">Ephemora complements post-quantum cryptography by controlling the lifetime of the execution environment. It does not replace PQC and does not claim to re-encrypt data.</p>
+    </div>
   </div>
 </div></section>
 
@@ -358,6 +352,7 @@ footer a{color:var(--sigil)}
   <p style="font-size:.78rem;color:var(--ink-faint);margin-top:14px">Not publicly disclosed — investor &amp; enterprise request only.</p>
 </aside>
 
+</main>
 <footer>
   <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:12px">
     <span>UAT evidence available on request</span>
