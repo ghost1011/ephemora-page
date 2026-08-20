@@ -137,10 +137,10 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
     <div class="section-head center">
       <span class="section-label">NSA PP-26-1834</span>
       <h2>Compliance mapping, not enforcement.</h2>
-      <p class="section-sub">        6/9 of the NSA PP-26-1834 control set mapped to Ephemora behavior (4 full, 2 partial — self-assessment, not an external audit).         Target: full 9/9 coverage by 31.12.2026.         <a href="https://www.nsa.gov/press-releases/2610016" target="_blank" rel="noopener">NSA PP-26-1834 PDF →</a>      </p>
+      <p class="section-sub">        7/9 of the NSA PP-26-1834 control set mapped to Ephemora Platform behavior (5 full, 2 partial — self-assessment, not an external audit).         Target: full 9/9 coverage by 31.12.2026.         <a href="https://www.nsa.gov/press-releases/2610016" target="_blank" rel="noopener">NSA PP-26-1834 PDF →</a>      </p>
     </div>
     <div style="text-align:center;color:var(--muted);font-size:1.05rem;line-height:2;max-width:720px;margin:0 auto">
-      4/9 fully mapped &nbsp;·&nbsp; 2/9 partial &nbsp;·&nbsp; 3/9 not yet covered<br>
+      5/9 fully mapped &nbsp;·&nbsp; 2/9 partial &nbsp;·&nbsp; 2/9 not yet covered<br>
       Self-assessment — not an external audit. Countdown to 9/9: 31.12.2026.
     </div>
   </div>
@@ -178,11 +178,11 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:560px;margin:32px auto 0">
       <div class="metric-hero" style="padding:24px">
         <div class="big" style="font-size:1.8rem">27<span class="unit">ms</span></div>
-        <p class="label">cleanup time (simulated, not NIST-verified)</p>
+        <p class="label">self-destruct cleanup (live scenarios 4/4, own measurement)</p>
       </div>
       <div class="metric-hero" style="padding:24px">
         <div class="big" style="font-size:1.8rem">9,216</div>
-        <p class="label">evidence bundles generated (simulated)</p>
+        <p class="label">evidence bundles generated (own measurement)</p>
       </div>
     </div>
   </div>
@@ -194,12 +194,12 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
   <div class="container">
     <div class="section-head center">
       <span class="section-label">Validation</span>
-      <h2>14/14 NVIDIA DGX Spark PoC scenarios passed.</h2>
-      <p class="section-sub">        14/14 PoC scenarios passed on NVIDIA DGX Spark GB10. ~0.84% overhead (measured, not claimed).         Cold-start p95: 22.7ms (non-pooled).       </p>
+      <h2>13/13 NVIDIA DGX Spark PoC scenarios passed.</h2>
+      <p class="section-sub">        Our own measurement on our own NVIDIA DGX Spark GB10 (agent: NemoClaw/Nemotron) — 13/13 scenarios, ~0.84% overhead. Measured, not claimed; not independently replicated.       </p>
     </div>
     <div class="metric-hero">
-      <div class="big">14/14<span class="unit"> passed</span></div>
-      <p class="label">NVIDIA DGX Spark GB10 PoC — 0.84% overhead, 22.7ms cold-start p95</p>
+      <div class="big">13/13<span class="unit"> passed</span></div>
+      <p class="label">NVIDIA DGX Spark GB10 PoC (NemoClaw) — ~0.84% overhead, own measurement</p>
     </div>
   </div>
 </section>
@@ -209,7 +209,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
     <div class="section-head center">
       <span class="section-label">Performance</span>
       <h2>No compromise.</h2>
-      <p class="section-sub">0.125ms pooled startup (UAT-verified, N=300). Bypass rate not disclosed — no bypass test run.</p>
+      <p class="section-sub">Full-pipeline latency 0.6ms (macOS) / 1.53ms (Linux); WASM boot 0.171ms vs Python subprocess 15.7ms (−98.75%) — own measurements, not independently replicated. Bypass rate not disclosed — no bypass test run.</p>
     </div>
     <div class="compare">
       <table>
@@ -225,8 +225,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
         </thead>
         <tbody>
           <tr>
-            <td>Startup Latency</td>
-            <td class="us-col"><strong>0.125ms</strong><br><span style="font-size:.8rem;color:var(--muted)">pooled (UAT-verified, N=300)</span></td>
+            <td>Pipeline latency</td>
+            <td class="us-col"><strong>0.6ms / 1.53ms</strong><br><span style="font-size:.8rem;color:var(--muted)">macOS / Linux, own measurement</span></td>
             <td><strong>≤125ms</strong><br><span style="font-size:.8rem;color:var(--muted)">official spec<sup>1</sup></span></td>
             <td><strong>81–280ms</strong><br><span style="font-size:.8rem;color:var(--muted)">runsc create+start<sup>2</sup></span></td>
             <td><strong>40–260ms</strong><br><span style="font-size:.8rem;color:var(--muted)">runc cold<sup>3</sup></span></td>
@@ -239,18 +239,18 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
             <td><span style="font-size:.8rem;color:var(--muted)">shared host kernel,<br>seccomp default<sup>5</sup></span></td>
           </tr>
           <tr>
-            <td>Vaporization</td>
-            <td class="us-col"><strong>post-execution</strong></td>
+            <td>Limited-Dwell</td>
+            <td class="us-col"><strong>Zero-Dwell</strong><br><span style="font-size:.8rem;color:var(--muted)">post-execution auto-close — no persistence by default</span></td>
             <td>VMM kill<sup>1</sup></td>
             <td>—</td>
             <td>—</td>
           </tr>
           <tr>
-            <td>Memory/Instance</td>
-            <td class="us-col"><strong>32–128MB</strong></td>
-            <td><strong>128MiB min</strong><br><span style="font-size:.8rem;color:var(--muted)">+ ≤5MiB VMM<sup>1</sup></span></td>
-            <td><span style="font-size:.8rem;color:var(--muted)">~10–50MiB RSS<sup>4</sup></span></td>
-            <td><span style="font-size:.8rem;color:var(--muted)">no fixed overhead<sup>3</sup></span></td>
+            <td>WASM boot</td>
+            <td class="us-col"><strong>0.171ms</strong><br><span style="font-size:.8rem;color:var(--muted)">vs Python subprocess 15.7ms (−98.75%)</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
           </tr>
           <tr>
             <td>Guard Fastpath</td>
@@ -260,11 +260,11 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
             <td><span style="font-size:.8rem;color:var(--muted)">+32% syscall vs native<sup>4</sup></span></td>
           </tr>
           <tr>
-            <td>Memory64 Opt-in</td>
-            <td class="us-col"><strong>4 GiB+ address space</strong></td>
-            <td><span style="font-size:.8rem;color:var(--muted)">n/a (Linux guest)</span></td>
-            <td><span style="font-size:.8rem;color:var(--muted)">n/a (Linux-compat)</span></td>
-            <td><span style="font-size:.8rem;color:var(--muted)">n/a (native 64-bit)</span></td>
+            <td>Self-Destruct</td>
+            <td class="us-col"><strong>27ms</strong><br><span style="font-size:.8rem;color:var(--muted)">live scenarios 4/4, own measurement</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">VMM shutdown</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
           </tr>
         </tbody>
       </table>
@@ -275,7 +275,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
         <sup>4</sup> USENIX HotCloud'19 "The True Cost of Containing: A gVisor Case Study".<br>
         <sup>5</sup> Docker engine security docs (official) — seccomp profile default.<br>
         <sup>6</sup> gVisor blog 2021: getpid native 62ns → runsc-KVM 830ns → runsc-ptrace 6249ns.<br>
-        Ephemora figures are UAT-verified per internal claim register (test identifiers on request); the bypass rate is honestly not measured yet. Guard Fastpath (2.8µs/7.1µs) is a local measurement — not yet published. Startup figures are only comparable within the same measurement method — 0.125ms is a pooled, in-process measurement.
+        Ephemora figures are own measurements from the internal claim register (evidence on request); the bypass rate is honestly not measured yet. Guard Fastpath (2.8µs/7.1µs) and pipeline latency (0.6ms/1.53ms) are local measurements — not yet published, not independently replicated. Startup figures are only comparable within the same measurement method.
       </p>
     </div>
   </div>
@@ -287,7 +287,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
     <div class="section-head center">
       <span class="section-label">Compliance Mapping</span>
       <h2>56× full control mappings across 7 frameworks.</h2>
-      <p class="section-sub">        299/299 compliance tests passed (56 full + 6 partial). Mapping to DORA, EU AI Act, NIS2, ISO 27001, SOC 2, CMMC, and HIPAA.         Mapping document — not enforcement. EU AI Act Art.12 (execution records) + Art.50 (transparency) mapped via SEP-2787-styled canonical format.       </p>
+      <p class="section-sub">        299/299 compliance tests passed (56 full + 6 partial, internal). Mapping to DORA, EU AI Act, NIS2, ISO 27001, SOC 2, CMMC, and HIPAA.         Mapping document — not enforcement; full 56-matrix available on request (gated). EU AI Act Art. 50 (transparency) mapped via SEP-2787-styled canonical format.       </p>
     </div>
     <div class="compare">
       <table>
@@ -300,9 +300,9 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
           </tr>
         </thead>
         <tbody>
-          <tr><td>EU AI Act (Art.12, 17, 72)</td><td class="us-col"><strong>Full</strong></td><td>Execution records + transparency</td></tr>
+          <tr><td>EU AI Act (Art. 50)</td><td class="us-col"><strong>Full</strong></td><td>Transparency mapping</td></tr>
           <tr><td>DORA</td><td class="us-col"><strong>Full</strong></td><td>AI control evidence</td></tr>
-          <tr><td>NIS2</td><td class="us-col"><strong>Full</strong></td><td>Incident response mapping</td></tr>
+          <tr><td>NIS2</td><td class="us-col"><strong>9/10</strong></td><td>Incident response mapping (MFA partial)</td></tr>
           <tr><td>ISO 27001</td><td class="us-col"><strong>Full</strong></td><td>Control mapping</td></tr>
           <tr><td>SOC 2</td><td class="us-col"><strong>Full</strong></td><td>Trust service criteria</td></tr>
           <tr><td>CMMC</td><td class="us-col"><strong>Full</strong></td><td>Defense data mapping</td></tr>
@@ -323,7 +323,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
   <p style="margin-top:16px;font-size:.85rem;color:var(--faint)">Michael Soppa, CEO &amp; Founder</p>
   <div style="margin-top:24px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);max-width:480px;margin:0 auto">
     <p style="font-weight:700;font-size:.95rem;margin-bottom:8px">Gated Asset: 9×2 NSA Compliance Matrix</p>
-    <p style="font-size:.85rem;color:var(--muted);margin-bottom:16px">      9-control × 2-metric compliance matrix — current coverage 6/9, target 9/9 (31.12.2026). Request via LinkedIn or email.</p>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:16px">      9-control × 2-metric compliance matrix — current coverage 7/9, target 9/9 (31.12.2026). Request via LinkedIn or email.</p>
     <p style="font-size:.8rem;color:var(--faint)">Not publicly disclosed — investor &amp; enterprise request only.</p>
   </div>
 </div></section>
