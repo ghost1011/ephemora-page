@@ -353,6 +353,32 @@ footer a{color:var(--sigil)}
 </aside>
 
 </main>
+<!-- CONTEXT & SOURCES -->
+<section class="fade-in fade-up" id="sources"><div class="container">
+  <div class="section-head"><span class="section-label">Context &amp; sources</span>
+    <h2>Where the context comes from</h2>
+  </div>
+  <div class="sources-list">
+    <div class="source-item"><span class="source-num">01</span><div class="source-body">
+      <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3148990/nsa-releases-future-quantum-resistant-qr-algorithm-requirements-for-national-se/" target="_blank" rel="noopener noreferrer">Announcing the Commercial National Security Algorithm Suite 2.0</a>
+      <span class="source-meta">National Security Agency &middot; September 2022</span>
+    </div></div>
+    <div class="source-item"><span class="source-num">02</span><div class="source-body">
+      <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50" target="_blank" rel="noopener noreferrer">Article 50 &mdash; Transparency obligations for providers and deployers of certain AI systems</a>
+      <span class="source-meta">EU AI Act &middot; Chapter IV</span>
+    </div></div>
+    <div class="source-item"><span class="source-num">03</span><div class="source-body">
+      <a href="https://www.cisa.gov/resources-tools/resources/careful-adoption-agentic-ai-services" target="_blank" rel="noopener noreferrer">Careful Adoption of Agentic AI Services</a>
+      <span class="source-meta">CISA with international partners &middot; May 2026</span>
+    </div></div>
+    <div class="source-item"><span class="source-num">04</span><div class="source-body">
+      <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener noreferrer">NVIDIA DGX Spark &mdash; measurement platform</a>
+      <span class="source-meta">NVIDIA &middot; product page</span>
+    </div></div>
+  </div>
+  <p class="sources-note">Benchmarks are our own measurements on our own DGX Spark, not independently replicated.</p>
+</div></section>
+
 <footer>
   <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:12px">
     <span>UAT evidence available on request</span>
@@ -425,4 +451,14 @@ var FORM_EMAIL = 'hello@ephemora.io';
   });
 })();
 </script>
-</body></html>
+</body></html/* === CONTEXT & SOURCES === */
+.sources-list{display:grid;gap:14px;max-width:760px;margin:0 auto}
+.source-item{display:flex;gap:16px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;transition:border-color .2s}
+.source-item:hover{border-color:var(--sigil)}
+.source-num{font-family:var(--font-mono);font-size:.72rem;color:var(--ink-faint);letter-spacing:.1em}
+.source-body{display:grid;gap:4px}
+.source-body a{color:var(--sigil);font-size:.95rem;font-weight:600;text-decoration:underline;text-decoration-color:rgba(166,58,40,.4);text-underline-offset:3px}
+.source-body a:hover{color:var(--ink)}
+.source-meta{font-size:.78rem;color:var(--ink-faint)}
+.sources-note{margin-top:18px;font-size:.78rem;color:var(--ink-faint);text-align:center;font-family:var(--font-mono)}
+>
