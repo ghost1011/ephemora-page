@@ -233,10 +233,17 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
           </tr>
           <tr>
             <td>Evasion Block</td>
-            <td class="us-col"><strong>Multi-layer, UAT-verified</strong><br><span style="font-size:.8rem;color:var(--muted)">defense-in-depth — evasion scenarios blocked (layer counts and thresholds are internal)</span><br><span style="font-size:.8rem;color:var(--muted)">bypass rate not measured yet</span></td>
+            <td class="us-col"><strong>Multi-layer, UAT-verified</strong><br><span style="font-size:.8rem;color:var(--muted)">defense-in-depth — evasion scenarios blocked (layer counts and thresholds are internal)</span><br><span style="font-size:.8rem;color:var(--muted)">containment harness: 17/17 payloads, 0 bypasses</span></td>
             <td><span style="font-size:.8rem;color:var(--muted)">KVM HW isolation,<br>jailer+seccomp<sup>1</sup></span></td>
             <td><span style="font-size:.8rem;color:var(--muted)">Sentry+seccomp,<br>55/319 host syscalls<sup>4</sup></span></td>
             <td><span style="font-size:.8rem;color:var(--muted)">shared host kernel,<br>seccomp default<sup>5</sup></span></td>
+          </tr>
+          <tr>
+            <td>Injection Detection</td>
+            <td class="us-col"><strong>0.136ms</strong><br><span style="font-size:.8rem;color:var(--muted)">per payload, own measurement</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
+            <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
           </tr>
           <tr>
             <td>Limited-Dwell</td>
@@ -275,7 +282,7 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
         <sup>4</sup> USENIX HotCloud'19 "The True Cost of Containing: A gVisor Case Study".<br>
         <sup>5</sup> Docker engine security docs (official) — seccomp profile default.<br>
         <sup>6</sup> gVisor blog 2021: getpid native 62ns → runsc-KVM 830ns → runsc-ptrace 6249ns.<br>
-        Ephemora figures are own measurements from the internal claim register (evidence on request); the bypass rate is honestly not measured yet. Guard Fastpath (2.8µs/7.1µs) and pipeline latency (0.6ms/1.53ms) are local measurements — not yet published, not independently replicated. Startup figures are only comparable within the same measurement method.
+        Ephemora figures are own measurements from the internal claim register (evidence on request); the bypass rate is honestly not measured yet. Guard Fastpath (2.8µs/7.1µs), pipeline latency (0.6ms/1.53ms), injection detection (0.136ms) and the 17/17 containment harness are local measurements — not yet published, not independently replicated. Startup figures are only comparable within the same measurement method.
       </p>
     </div>
   </div>

@@ -21,6 +21,7 @@ const i18n = {
       'mcp.badge1': 'Official MCP Inspector verified',
       'mcp.badge2': '0.89ms per call · 845 exec/s on DGX',
       'mcp.badge3': '1 dependency · WASM modules as tools',
+      'mcp.badge4': '4/4 MCP exploit PoCs blocked (vs. reference server)',
 
       'hero.badge': 'WASI Preview1 · 272 Tests · v2.1.1 · Apache-2.0',
       'why.label': 'Why Ephemora Cell',
@@ -169,6 +170,7 @@ const i18n = {
       'mcp.badge1': 'Offizieller MCP-Inspector verifiziert',
       'mcp.badge2': '0,89 ms pro Call · 845 exec/s auf DGX',
       'mcp.badge3': '1 Abhängigkeit · WASM-Module als Tools',
+      'mcp.badge4': '4/4 MCP-Exploit-PoCs blockiert (vs. Referenzserver)',
 
       'hero.badge': 'WASI Preview1 · 272 Tests · v2.1.1 · Apache-2.0',
       'lang.comparison.label': 'Vergleich',
@@ -316,6 +318,7 @@ const i18n = {
       'mcp.badge1': 'Inspecteur MCP officiel vérifié',
       'mcp.badge2': '0,89 ms par appel · 845 exec/s sur DGX',
       'mcp.badge3': '1 dépendance · modules WASM comme outils',
+      'mcp.badge4': "4/4 PoC d'exploitation MCP bloqués (vs serveur de référence)",
 
       'hero.badge': 'WASI Preview1 · 272 Tests · v2.1.1 · Apache-2.0',
       'lang.comparison.label': 'Comparaison',
@@ -463,6 +466,7 @@ const i18n = {
       'mcp.badge1': 'Oficjalny MCP Inspector zweryfikowany',
       'mcp.badge2': '0,89 ms na wywołanie · 845 exec/s na DGX',
       'mcp.badge3': '1 zależność · moduły WASM jako narzędzia',
+      'mcp.badge4': '4/4 PoC exploitów MCP zablokowane (vs serwer referencyjny)',
 
       'hero.badge': 'WASI Preview1 · 272 testów · v2.1.1 · Apache-2.0',
       'lang.comparison.label': 'Porównanie',
