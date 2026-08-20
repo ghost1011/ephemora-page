@@ -107,15 +107,15 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
     </div>
     <div class="feature-card">
       <h3>Cryptographic Verification</h3>
-      <p>Every execution is HMAC-verified (simulated, not a zero-knowledge proof). Prove what ran, when, and with what result — for auditors and regulators. Currently: HMAC attestation, ZK-proof on roadmap.</p>
+      <p>Every execution is HMAC-attested — prove what ran, when, and with what result, for auditors and regulators. Currently: HMAC attestation, not a zero-knowledge proof; ZK-proof on roadmap.</p>
     </div>
     <div class="feature-card">
       <h3>Compliance-Ready Traces</h3>
       <p>Signed, canonical execution records (Ed25519 + RFC 8785) map to DORA, EU AI Act, and NIS2 evidence requirements. Roadmap: pre-built compliance bundles.</p>
     </div>
     <div class="feature-card">
-      <h3>Limited-Dwell Execution</h3>
-      <p>After execution, the sandbox is closed and the working directory is removed. No residual state, no forensic residue. What runs stays contained.</p>
+      <h3>Auto-Close Execution</h3>
+      <p>After execution, the sandbox is closed and the working directory is removed — post-execution auto-close, no persistence by default. No residual state, no forensic residue. What runs stays contained.</p>
     </div>
   </div>
 </div></section>
@@ -246,8 +246,8 @@ footer{border-top:1px solid var(--border);padding:36px 0;text-align:center;font-
             <td><span style="font-size:.8rem;color:var(--muted)">n/a</span></td>
           </tr>
           <tr>
-            <td>Limited-Dwell</td>
-            <td class="us-col"><strong>Zero-Dwell</strong><br><span style="font-size:.8rem;color:var(--muted)">post-execution auto-close — no persistence by default</span></td>
+            <td>Auto-Close</td>
+            <td class="us-col"><strong>Auto-Close</strong><br><span style="font-size:.8rem;color:var(--muted)">post-execution auto-close — no persistence by default</span></td>
             <td>VMM kill<sup>1</sup></td>
             <td>—</td>
             <td>—</td>
